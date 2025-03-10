@@ -28,14 +28,10 @@ const About = () => {
           <div className="flex flex-col gap-12 justify-center">
             <h1 className=" font-bold text-2xl">BIOGRAPHY</h1>
             <p className=" text-sm text-black">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-              repellat consequuntur, dicta ab earum cumque magnam quibusdam
-              culpa perspiciatis maxime nulla, nesciunt amet perferendis libero
-              id excepturi, labore molestiae. Commodi?
+            I’m a freelance Full Stack Developer with 2.6+ years of experience, specializing in web and mobile app development. I help businesses and startups build high-performance applications, optimize their digital presence, and develop scalable SaaS solutions.
             </p>
             <span className=" text-black  italic text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Assumenda, consequuntur.
+            Whether you need a custom website, mobile app, e-commerce solution, or cloud-based system, I’ve got you covered!
             </span>
             <div className="self-end">
               <svg
@@ -82,95 +78,38 @@ const About = () => {
               </motion.svg>
             </div>
           </div>
-          {/* SKILLS */}
-          <div className="flex flex-col gap-24 justify-center" ref={skilRef}>
-            <motion.h1
-              initial={{ x: "-300px" }}
-              animate={isSkillView ? { x: 0 } : {}}
-              transition={{ delay: 0.1 }}
-              className=" font-bold text-2xl"
-              
-            >
-              SKILLS
-            </motion.h1>
-            <motion.div 
-            initial={{ x: "-300px" }}
-            animate={isSkillView ? { x: 0 } : {}}
-            transition={{ delay: 0.1 }}
-            className="flex flex-wrap gap-4">
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm ">
-                JavaScript
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Flutter
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Exprees JS
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Node Js
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Dart
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                State Management
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Node Js
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Dart
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                State Management
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Node Js
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                Dart
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                State Management
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                State Management
-              </div>
-              <div className=" cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
-                State Management
-              </div>
-            
-            </motion.div>
-            <div>
-              <motion.svg
-                initial={{ opacity: 0.2, y: 0 }}
-                animate={{ opacity: 1, y: "10px" }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 3,
-                  ease: "easeInOut",
-                }}
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                width={50}
-                height={50}
-              >
-                <path
-                  d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z"
-                  stroke="#000000"
-                  strokeWidth="1"
-                ></path>
-                <path d="M12 6V14" stroke="#000000" strokeWidth="1"></path>
-                <path
-                  d="M15 11L12 14L9 11"
-                  stroke="#000000"
-                  strokeWidth="1"
-                ></path>
-              </motion.svg>
-            </div>
-          </div>
+         {/* SKILLS */}
+<div className="flex flex-col gap-24 justify-center" ref={skilRef}>
+  <motion.h1 
+    initial={{ x: "-300px" }} 
+    animate={isSkillView ? { x: 0 } : {}} 
+    transition={{ delay: 0.1 }} 
+    className="font-bold text-2xl">
+    SKILLS
+  </motion.h1>
+  
+  <motion.div 
+    initial={{ x: "-300px" }} 
+    animate={isSkillView ? { x: 0 } : {}} 
+    transition={{ delay: 0.1 }} 
+    className="flex flex-wrap gap-4">
+    {["JavaScript", "Flutter", "Express JS", "Node JS", "Dart", "State Management", "WordPress", 
+      "Python", "FastAPI", "BLoC", "PostgreSQL", "SQL", "Firebase", "Supabase"].map(skill => (
+      <div key={skill} className="cursor-pointer hover:text-black hover:bg-white text-white bg-black rounded p-1 text-sm">
+        {skill}
+      </div>
+    ))}
+  </motion.div>
+
+  <motion.svg
+    initial={{ opacity: 0.2, y: 0 }}
+    animate={{ opacity: 1, y: "10px" }}
+    transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+    viewBox="0 0 24 24" fill="none" width={50} height={50}>
+    <path d="M5 15C5 16.8 5.7 18.6 7 19.9C8.3 21.2 10.1 22 12 22C13.9 22 15.7 21.2 17 19.9C18.3 18.6 19 16.8 19 15V9C19 7.1 18.3 5.3 17 4C15.7 2.7 13.9 2 12 2C10.1 2 8.3 2.7 7 4C5.7 5.3 5 7.1 5 9V15Z" stroke="#000" strokeWidth="1"/>
+    <path d="M12 6V14M15 11L12 14L9 11" stroke="#000" strokeWidth="1"/>
+  </motion.svg>
+</div>
           {/* EXPERICENCE */}
           <div className="flex flex-col gap-24  pb-64 justify-center" ref={experienceRef}>
             <motion.h1 
@@ -189,7 +128,7 @@ const About = () => {
                 {/* LEFT */}
                 <div className=" w-1/3">
                   <div className=" p-2 bg-white text-md rounded font-semibold">
-                    Senior Software Engineer
+                    Freelance Developer
                   </div>
                   <div className="text-sm px-1 mt-2 italic">
                     My current employment, Way better than the position before!
@@ -198,7 +137,7 @@ const About = () => {
                     2024 - Present
                   </div>
                   <div className=" p-1 mt-2 bg-white text-sm font-semibold w-fit rounded">
-                    Apple
+                    Nexus Tech Works
                   </div>
                 </div>
                 {/* CENTER */}
@@ -226,16 +165,16 @@ const About = () => {
                 {/* RIGHT */}
                 <div className="w-1/3">
                   <div className=" p-2 bg-white text-md rounded font-semibold">
-                    Senior Software Engineer
+                    Team Lead & Senior Software Developer
                   </div>
                   <div className="text-sm px-1 mt-2 italic">
                     My current employment, Way better than the position before!
                   </div>
                   <div className=" text-red-400 text-sm mt-4">
-                    2024 - Present
+                    2023 - 2024
                   </div>
                   <div className=" p-1 mt-2 bg-white text-sm font-semibold w-fit rounded">
-                    Apple
+                    Uth Software
                   </div>
                 </div>
               </div>
@@ -243,16 +182,16 @@ const About = () => {
                 {/* LEFT */}
                 <div className=" w-1/3">
                   <div className=" p-2 bg-white text-md rounded font-semibold">
-                    Senior Software Engineer
+                    Flutter Full-Stack Developer
                   </div>
                   <div className="text-sm px-1 mt-2 italic ">
                     My current employment, Way better than the position before!
                   </div>
                   <div className=" text-red-400 text-sm mt-4">
-                    2024 - Present
+                    2022 - 2023
                   </div>
                   <div className=" p-1 mt-2 bg-white text-sm font-semibold w-fit rounded">
-                    Apple
+                  Uth Software
                   </div>
                 </div>
                 {/* CENTER */}
@@ -265,6 +204,33 @@ const About = () => {
                 </div>
                 {/* RIGHT */}
                 <div className="w-1/3"></div>
+              </div>
+              <div className="flex justify-between  h-48">
+                {/* LEFT */}
+                <div className=" w-1/3"></div>
+                {/* CENTER */}
+                <div className=" w-1/8 h-full">
+                  {/* LINE */}
+                  <div className="w-1 h-full bg-gray-600 rounded relative items-center">
+                    {/* CIRCLE */}
+                    <div className=" absolute w-5 h-5 rounded-full ring-2 ring-red-400 bg-white -left-2"></div>
+                  </div>
+                </div>
+                {/* RIGHT */}
+                <div className="w-1/3">
+                  <div className=" p-2 bg-white text-md rounded font-semibold">
+                    WordPress Developer
+                  </div>
+                  <div className="text-sm px-1 mt-2 italic">
+                    My current employment, Way better than the position before!
+                  </div>
+                  <div className=" text-red-400 text-sm mt-4">
+                    2022 - 2022
+                  </div>
+                  <div className=" p-1 mt-2 bg-white text-sm font-semibold w-fit rounded">
+                    Digicarnation
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

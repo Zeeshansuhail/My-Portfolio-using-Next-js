@@ -1,134 +1,121 @@
-'use client'
+"use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Navlink from "@/components/navlink";
-import Image from "next/image";
 import { motion } from "framer-motion";
-
+import NavLink from "./navlink";
 
 const links = [
-  {
-    link: "/",
-    name: "Home",
-  },
-  { link: "/about", name: "About" },
-  { link: "/portfolio", name: "Portfolio" },
-  { link: "/contact", name: "Contact" },
+  { url: "/", title: "Home" },
+  { url: "/about", title: "About" },
+  { url: "/portfolio", title: "Portfolio" },
+  { url: "/contact", title: "Contact" },
 ];
-const Navbar = () => {
-  const [open,setOpen] = useState(false)
 
-  const topVariant = {
-    closed:{
-      rotate:0
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  const menuVariants = {
+    closed: { x: "100vw" },
+    opened: {
+      x: 0,
+      transition: { when: "beforeChildren", staggerChildren: 0.2 },
     },
-    opened:{
-      rotate:45,
-      backgroudColor: "rgb(255,255,255,255)"
-    }
   };
-  const centerVariant = {
-    closed:{
-      opacity:1,
-    },
-    opened:{
-      opacity:0
-    }
-  };
-  const bottomVariant = {
-    closed:{
-      rotate:0
-    },
-    opened:{
-      rotate:-45,
-      backgroudColor: "rgb(255,255,255,255)"
-    }
-  };
-  
-  const listVariant = {
-    closed: {
-      x:"100vw"
-    },
-    opened:{
-      x:0,
-      transition:{
-        when:"beforeChildren",
-        staggerChildren:0.2
-      }
-          
-    }
-  };
-  
-  const listItemVariant = {
-    closed: {
-      x:-10,
-      opacity:0,
-    },
-    opened:{
-      x:10,
-      opacity:1
-    }
+
+  const menuItemVariants = {
+    closed: { opacity: 0, x: -20 },
+    opened: { opacity: 1, x: 0 },
   };
 
   return (
-    <div className="h-full flex justify-between items-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-lg">
-      {/* Navigation Link */}
-      <div className="hidden md:flex gap-4 w-1/3">
-      {links.map((linkItem)=>(
-          <Navlink link={linkItem} key={linkItem.name}/>
-         ))}
+    <nav className="h-16 flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32  w-full top-0 z-50 fixed md:static lg:static xl:static">
+      {/* LOGO */}
+      <div className="flex items-center">
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={150}
+            height={50}
+            className="object-contain"
+          />
+        </Link>
       </div>
-      {/* logo */}
-      <div className=" md:flex xl:justify-center xl:w-1/3">
-        <Link
-          href="/"
-          className=" text-sm bg-black rounded-md p-1 flex items-center"
+
+      {/* NAV LINKS (Desktop) */}
+      <div className="hidden md:flex gap-8">
+        {links.map((link) => (
+          <NavLink link={link} key={link.title} />
+        ))}
+      </div>
+
+      {/* SOCIAL LINKS */}
+      <div className="hidden md:flex gap-4">
+        <a
+          href="https://github.com/Zeeshansuhail"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
         >
-          <span className=" text-white mr-1 ml-1">Zees</span>
-          <span className="w-12 h-8 bg-white flex items-center justify-center rounded-sm">
-            .dev
-          </span>
-        </Link>
+          <Image src="/github.png" alt="GitHub" width={35} height={35} />
+        </a>
+        
+        <a
+          href="https://www.linkedin.com/in/zeeshan-suhail-ahmed-321779232/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <Image src="/linkedin.png" alt="LinkedIn" width={35} height={35} />
+        </a>
       </div>
-    {/* Social Links */}
-      <div className="hidden md:flex gap-4 xl:w-1/3">
-        <Link href=''>
-        <Image src="/githug.png" alt="git" width={24} height={24} className=" object-cover"/>
-        </Link>
-        <Link href=''>
-        <Image src="/facebook.png" alt="" width={24} height={24}/>
-        </Link>
-        <Link href=''>
-        <Image src="/insta.png" alt="" width={24} height={24}/>
-        </Link>
-        <Link href=''>
-        <Image src="/twitter.png" alt="" width={24} height={24}/>
-        </Link>
-        <Link href=''>
-        <Image src="/linkdin.png" alt="" width={24} height={24}/>
-        </Link>
-      </div>
-      {/* menu navigation for phone */}
-      <div  className=" md:hidden">
-        <button className="w-10 h-8 flex flex-col justify-between z-50 relative" onClick={()=> setOpen((value)=>!value)}>
-          <motion.div variants={topVariant} animate={open? "opened":"closed"} className=  {open?"w-10 h-1  bg-white rounded origin-left":"w-10 h-1  bg-black rounded"}></motion.div>
-          <motion.div variants={centerVariant} animate={open? "opened":"closed"} className={open?"w-10 h-1  rounded":"w-10 h-1  bg-black rounded"}></motion.div>
-          <motion.div variants={bottomVariant} animate={open? "opened":"closed"} className={open?"w-10 h-1  bg-white rounded origin-left":"w-10 h-1  bg-black rounded"}></motion.div>
+
+      {/* MOBILE MENU BUTTON */}
+      <div className="md:hidden">
+        <button
+          className="w-10 h-8 flex flex-col justify-between"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          <motion.div
+            className="w-10 h-1 bg-black rounded origin-left"
+            animate={open ? { rotate: 45 } : { rotate: 0 }}
+          />
+          <motion.div
+            className="w-10 h-1 bg-black rounded"
+            animate={open ? { opacity: 0 } : { opacity: 1 }}
+          />
+          <motion.div
+            className="w-10 h-1 bg-black rounded origin-left"
+            animate={open ? { rotate: -45 } : { rotate: 0 }}
+          />
         </button>
+
+        {/* MOBILE MENU */}
         {open && (
-        <motion.div variants={listVariant} initial="closed" animate="opened" className="absolute top-0 left-0 h-screen w-screen bg-black flex flex-col justify-center text-white gap-8 text-4xl z-40">
-         
-         {links.map((linkItem)=>(
-          <motion.div variants={listItemVariant} key={linkItem.name}>
-          <Link className="flex item-center justify-center" href={linkItem.link}>{linkItem.name}</Link>
+          <motion.div
+            variants={menuVariants}
+            initial="closed"
+            animate="opened"
+            className="absolute top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-6 text-3xl"
+          >
+            {links.map((link) => (
+              <motion.div key={link.title} variants={menuItemVariants}>
+                <Link
+                  href={link.url}
+                  onClick={() => setOpen(false)}
+                  className="hover:text-gray-300"
+                >
+                  {link.title}
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
-         ))}
-         
-        </motion.div>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 
