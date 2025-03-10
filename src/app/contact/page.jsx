@@ -35,7 +35,7 @@ const Contact = () => {
           <span className="text-lg">Regards</span>
           {success && (<span className="text-sm text-green-600 font-semibold">Email address sent success</span>)}
           {error && (<span className="text-sm text-red-600 font-semibold">Your mail is not sent</span>)}
-          <button className=" bg-purple-200 rounded-lg font-medium text-black p-4 ">Send</button>
+          <button  className=" bg-purple-200 rounded-lg font-medium text-black p-4 ">Send</button>
         </form> 
     </div>
     </motion.div>
